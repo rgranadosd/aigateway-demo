@@ -50,11 +50,11 @@ Before installing the application, you need to set up access to the WSO2 API Gat
    - Go to your application's "Production Keys" tab
    - Click "Generate Keys" to create OAuth2 credentials
    - Copy the **Consumer Key** and **Consumer Secret**
-   - Note the **Token URL** (typically `https://your-wso2-server:9443/oauth2/token`)
+   - Note the **Token URL** (typically `https://your-wso2-server:9453/oauth2/token`)
 
 5. **Get API Endpoints**
    - For each subscribed API, note the gateway endpoint URLs
-   - These are typically in the format: `https://your-wso2-server:8243/{api-context}/{version}`
+   - These are typically in the format: `https://your-wso2-server:8253/{api-context}/{version}`
 
 ## Installation
 
@@ -97,21 +97,21 @@ Sensitive credentials are stored in a `.env` file that is not tracked by git. Su
 # Shared WSO2 Gateway Credentials (fallback for all applications)
 WSO2_CONSUMER_KEY=your_shared_consumer_key
 WSO2_CONSUMER_SECRET=your_shared_consumer_secret
-WSO2_TOKEN_URL=https://your-wso2-server:9443/oauth2/token
+WSO2_TOKEN_URL=https://your-wso2-server:9453/oauth2/token
 
 # Application-specific OAuth Credentials (optional)
 DEFAULT_CONSUMER_KEY=your_default_app_consumer_key
 DEFAULT_CONSUMER_SECRET=your_default_app_consumer_secret
-DEFAULT_TOKEN_URL=https://your-wso2-server:9443/oauth2/token
+DEFAULT_TOKEN_URL=https://your-wso2-server:9453/oauth2/token
 
 STREAMLIT_CONSUMER_KEY=your_streamlit_app_consumer_key
 STREAMLIT_CONSUMER_SECRET=your_streamlit_app_consumer_secret
-STREAMLIT_TOKEN_URL=https://your-wso2-server:9443/oauth2/token
+STREAMLIT_TOKEN_URL=https://your-wso2-server:9453/oauth2/token
 
 # Provider-specific Chat Completions URLs (from subscribed APIs in WSO2)
-OPENLLM_CHAT_COMPLETIONS_URL=https://your-wso2-server:8243/openaiapi/v1/chat/completions
-MISTRAL_CHAT_COMPLETIONS_URL=https://your-wso2-server:8243/mistralapi/v1/chat/completions
-ANTHROPIC_CHAT_COMPLETIONS_URL=https://your-wso2-server:8243/anthropicapi/v1/messages
+OPENLLM_CHAT_COMPLETIONS_URL=https://your-wso2-server:8253/openaiapi/v1/chat/completions
+MISTRAL_CHAT_COMPLETIONS_URL=https://your-wso2-server:8253/mistralapi/v1/chat/completions
+ANTHROPIC_CHAT_COMPLETIONS_URL=https://your-wso2-server:8253/anthropicapi/v1/messages
 ```
 
 **Credential Hierarchy:**
@@ -203,7 +203,7 @@ prompts:
 
 Example for adding a new "CLAUDE" provider:
 - Subscribe to Claude API in WSO2 Developer Portal
-- Add `CLAUDE_CHAT_COMPLETIONS_URL=https://your-wso2-server:8243/claudeapi/v1/messages` to `.env`
+- Add `CLAUDE_CHAT_COMPLETIONS_URL=https://your-wso2-server:8253/claudeapi/v1/messages` to `.env`
 - Add the following to `config.yaml`:
   ```yaml
   CLAUDE:
@@ -224,7 +224,7 @@ Example for adding a new "CLAUDE" provider:
    ```env
    NEWAPP_CONSUMER_KEY=new_app_consumer_key
    NEWAPP_CONSUMER_SECRET=new_app_consumer_secret
-   NEWAPP_TOKEN_URL=https://your-wso2-server:9443/oauth2/token
+   NEWAPP_TOKEN_URL=https://your-wso2-server:9453/oauth2/token
    ```
 4. **Add application configuration** to `applications.yaml`:
    ```yaml
